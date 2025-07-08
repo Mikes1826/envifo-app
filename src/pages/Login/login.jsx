@@ -1,11 +1,24 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Layout } from "../../components/Layout";
 import { NavLink } from "react-router";
 
 const Login = () => {
+
   const[isActive, setIsActive] = useState(false);
   const[isBussines, setIsBussines] = useState(false);
-  const style = "before:left-[50%]"
+  const[user, setUser] = useState([])
+  const style = "before:left-[50%]";
+
+  const userName = useRef(null);
+
+  const registerAction = () => {
+    let newUser = userName
+  }
+
+  const loginAction = () => {
+
+  }
+
   return(
     <Layout>
       <div className={`relative w-[850px] h-[550px] bg-white rounded-[30px] shadow-lg ${isActive ? "active" : ""} overflow-hidden`}>
@@ -35,7 +48,7 @@ const Login = () => {
           <form action="" className={`w-full ${isBussines?"hidden":""}`}>
             <h1 className="text-[36px] font-semibold mx-0 -my-[10px] mt-[300px]">Crafter register</h1>
             <div className="relative mx-0 my-[30px]">
-              <input type="text" placeholder="Username" required className="w-full pr-[50px] pt-[13px] pl-[20px] pb-[13px] bg-[#E4ccff] rounded-[8px] border-none outline-none text-[20px] text-[#333] font-medium"/>
+              <input type="text" placeholder="Username" required ref={userName} className={` w-full pr-[50px] pt-[13px] pl-[20px] pb-[13px] bg-[#E4ccff] rounded-[8px] border-none outline-none text-[20px] text-[#333] font-medium`}/>
               < i className='bx  bx-user-circle absolute right-[20px] top-[50%] translate-y-[-50%]' ></i>
             </div>
             <div className="relative mx-0 my-[30px]">
@@ -123,7 +136,6 @@ const Login = () => {
         </div>
       </div>
     </Layout>
-  )
-};
+  )}
 
 export {Login};
